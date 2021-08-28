@@ -8,6 +8,7 @@ const Wrapper = styled.header`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 2.25rem;
 `
 
 const Logo = styled.h1`

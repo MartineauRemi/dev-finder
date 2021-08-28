@@ -2,10 +2,12 @@ import React, {useState} from "react";
 import styled from "styled-components";
 import { SearchBtn } from "./components/Buttons"
 import Header from "./layout/Header"
+import SearchBar from "./layout/SearchBar"
 import GlobalStyle from "./GlobalStyle"
 
 function App() {
   const [darkTheme, setDarkTheme] = useState(false)
+  const [search, setSearch] = useState()
 
   const App = styled.div`
     width: 100vw;
@@ -25,7 +27,7 @@ function App() {
     max-width: 45.625rem;
 
     @media screen and (min-width: 768px){
-      padding: 4rem 2.5rem;
+      padding: 8.75rem 6rem;
     }
   `
 
@@ -39,6 +41,10 @@ const onClickToggleTheme = () => setDarkTheme(!darkTheme)
           <Header
             darkTheme={darkTheme}
             onClickToggleTheme={onClickToggleTheme} />
+
+          <SearchBar
+            darkTheme={darkTheme}
+            setSearch={setSearch}/>
         </Main>
       </App>
     </React.Fragment>
