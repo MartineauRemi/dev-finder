@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
     html{
         --blue: #0079ff;
         --light-blue: #60ABFF;
+        --blueish-gray: #4B6A9B;
         --white: #ffffff;
         
         --bg-light-primary: #F6F8FF;
@@ -30,15 +31,23 @@ const GlobalStyle = createGlobalStyle`
         --fw-bold: 700;
     }
 
-    p, span, h3{
+    a{
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    p, span{
         font-size: 1rem;
         line-height: 1.5rem;
         font-weight: var(---fw-regular);
     }
 
     h1{
-        font-size: 1.625rem;
-        line-height: 2.375rem;
+        font-size: 1.125rem;
+        line-height: 1.5rem;
     }
 
     h2{
@@ -46,10 +55,27 @@ const GlobalStyle = createGlobalStyle`
         line-height: 2rem;
     }
 
+    h3{
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
     h4{
         font-size: 0.875rem;
         line-height: 1.25rem;
         font-weight: var(--fw-regular);
+    }
+
+    @media screen and (min-width: 768px){
+        h1{
+            font-size: 1.625rem;
+            line-height: 2.375rem;
+        }
+
+        h3{
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
     }
 `
 
