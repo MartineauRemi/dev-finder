@@ -83,6 +83,7 @@ export default function SearchBar({darkTheme, setSearch, unknownUser, setUnknown
 
     return (
         <Wrapper
+            className="searchbar"
             darkTheme={darkTheme}
             onSubmit={(e) => onHandleSubmit(e)}>
                 <img

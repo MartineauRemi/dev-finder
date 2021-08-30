@@ -41,7 +41,8 @@ const Logo = styled.h1`
 
 export default function Header({darkTheme, onClickToggleTheme}) {
     return (
-        <Wrapper>
+        <Wrapper
+            className="header">
             <Logo darkTheme={darkTheme}>devfinder</Logo>
             <ThemeBtn
                 darkTheme={darkTheme}

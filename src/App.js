@@ -6,7 +6,7 @@ import Dashboard from "./layout/Dashboard"
 import GlobalStyle from "./GlobalStyle"
 import { getGithubUser } from "./API/GithubUsersAPI"
 import searchIllustration from "./assets/search-illustration.svg"
-
+import { fadeInSlideInRightAnim } from "./GlobalAnimations"
 const Wrapper = styled.div`
     min-height: 100vh;
     background-color: ${props => props.darkTheme ? 'var(--bg-dark-primary)' : 'var(--bg-light-primary)'};
@@ -16,16 +16,21 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* padding: 2rem 1.5rem; */
+    padding: 2rem 1.5rem;
 
-    /* @media screen and (min-width: 768px){
-      padding: 8.75rem 6rem;
-    } */
+    *{
+      transition: all .3s linear;
+    }
+
+    @media screen and (min-width: 768px){
+      padding: 4rem 6rem;
+    }
   `
 
   const Main = styled.main`
     width: 100%;
     max-width: 45.625rem;
+    animation: 1s ${fadeInSlideInRightAnim}
   `
 
   const Picture = styled.picture`
@@ -80,7 +85,8 @@ function App() {
                 darkTheme={darkTheme}
                 data={user} />)
             : (
-              <Picture>
+              <Picture
+                className="search-illustration">
                 <img src={searchIllustration} alt="" />
               </Picture>
             )}

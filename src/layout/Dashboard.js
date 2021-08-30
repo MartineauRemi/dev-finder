@@ -5,6 +5,7 @@ import WebsiteIcon from "../components/icons/LinkIcon"
 import LocationIcon from "../components/icons/LocationIcon"
 import CompanyIcon from "../components/icons/CompanyIcon"
 import { formatedDate } from '../API/GithubUsersAPI'
+import { fadeInSlideInRightAnim } from '../GlobalAnimations'
 
 const Wrapper = styled.article`
     width: 100%;
@@ -15,6 +16,7 @@ const Wrapper = styled.article`
     row-gap: 1.5rem;
     grid-template-areas: 'profilePic heading' 'bio bio' 'stats stats' 'links links';
     color: ${props => props.darkTheme? 'var(--color-dark-primary)' : 'var(--color-light-primary)'};
+    animation: 1s ${fadeInSlideInRightAnim};
 
     .unavailable{
         span, a{
