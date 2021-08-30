@@ -4,6 +4,7 @@ import twitter from "../assets/icon-twitter.svg"
 import website from "../assets/icon-website.svg"
 import location from "../assets/icon-location.svg"
 import company from "../assets/icon-company.svg"
+import { formatedDate } from '../API/GithubUsersAPI'
 
 const Wrapper = styled.article`
     width: 100%;
@@ -126,7 +127,6 @@ const InfosItem = styled.li`
         padding-right: 1.5rem;
     }
 `
-
 export default function Dashboard({darkTheme, data}) {
     const user = JSON.parse(data)
     return (
@@ -140,7 +140,7 @@ export default function Dashboard({darkTheme, data}) {
             <Heading>
                 <Username>{user.name}</Username>
                 <Usertag>@{user.login}</Usertag>
-                <Date>Joined <time>{user.created_at}</time></Date>
+                <Date>Joined <time>{formatedDate(user.created_at)}</time></Date>
             </Heading>
 
             <Bio>
