@@ -45,12 +45,6 @@ const GlobalStyle = createGlobalStyle`
         font-weight: var(---fw-regular);
     }
 
-    p, span, a{
-        color: ${props => props.darkTheme
-                        ? 'var(--color-dark-primary)'
-                        : 'var(--blueish-gray)'};
-    }
-
     h1{
         font-size: 1.125rem;
         line-height: 1.5rem;

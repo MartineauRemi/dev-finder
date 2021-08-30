@@ -104,6 +104,9 @@ const InfosItem = styled.li`
     span, a{
         overflow: hidden;
         text-overflow: ellipsis;
+        color: ${props => props.darkTheme
+                    ? 'var(--color-dark-primary)'
+                    : 'var(--color-blueish-gray)'}
     }
 
     img{
