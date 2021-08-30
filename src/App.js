@@ -4,7 +4,8 @@ import Header from "./layout/Header"
 import SearchBar from "./layout/SearchBar"
 import Dashboard from "./layout/Dashboard"
 import GlobalStyle from "./GlobalStyle"
-import { getGithubUser } from "./API/GithubUsersAPI";
+import { getGithubUser } from "./API/GithubUsersAPI"
+import searchIllustration from "./assets/search-illustration.svg"
 
 const Wrapper = styled.div`
     min-height: 100vh;
@@ -25,6 +26,14 @@ const Wrapper = styled.div`
   const Main = styled.main`
     width: 100%;
     max-width: 45.625rem;
+  `
+
+  const Picture = styled.picture`
+    display: grid;
+    img{
+      place-self: center;
+      max-height: 20rem;
+    }
   `
 
 function App() {
@@ -70,7 +79,11 @@ function App() {
               <Dashboard
                 darkTheme={darkTheme}
                 data={user} />)
-            : null}
+            : (
+              <Picture>
+                <img src={searchIllustration} alt="" />
+              </Picture>
+            )}
         </Main>
       </Wrapper>
     </React.Fragment>

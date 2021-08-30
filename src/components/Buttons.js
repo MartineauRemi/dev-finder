@@ -29,8 +29,16 @@ export const ThemeToggleBtn = styled(Button)`
     flex-direction: row;
     align-items: center;
     padding: 0;
+    transition: all .2s ease-in-out;
 
     span{
         margin-right: 1rem;
+    }
+
+    &:hover{
+        color: ${props => props.darkTheme
+                    ? 'var(--blueish-gray)'
+                    : 'var(--color-light-secondary)'
+        }
     }
 `

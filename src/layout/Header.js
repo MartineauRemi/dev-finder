@@ -11,13 +11,26 @@ const Wrapper = styled.header`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 2.25rem;
+`
 
-    .sun-icon .sun-icon path{
-        fill: var(--color-dark-primary);
+const ThemeBtn = styled(ThemeToggleBtn)`
+    .sun-icon path{
+        fill: var(--color-dark-primary);        //sun icon
+        transition: all .2s ease-in-out;
+    }
+    .moon-icon path{
+        fill: var(--color-light-primary);       //moon icon
+        transition: all .2s ease-in-out;
     }
 
-    &:hover .sun-icon path{
-        fill: var(--blueish-gray);
+    &:hover{
+        .sun-icon path{
+            fill: var(--blueish-gray);          //sun icon
+        }
+
+        .moon-icon path{
+            fill: var(--color-light-secondary);  //moon icon
+        }
     }
 `
 
@@ -29,12 +42,12 @@ export default function Header({darkTheme, onClickToggleTheme}) {
     return (
         <Wrapper>
             <Logo darkTheme={darkTheme}>devfinder</Logo>
-            <ThemeToggleBtn
+            <ThemeBtn
                 darkTheme={darkTheme}
                 onClick={onClickToggleTheme}>
                     <span>{darkTheme? 'light' : 'dark'}</span>
-                    {darkTheme ? <SunIcon className="sun-icon" /> : <MoonIcon className="moon-icon"/>}
-          </ThemeToggleBtn>
+                    {darkTheme ? <SunIcon /> : <MoonIcon />}
+          </ThemeBtn>
         </Wrapper>
     )
 }
