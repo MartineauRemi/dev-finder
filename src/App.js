@@ -31,13 +31,19 @@ function App() {
   const [darkTheme, setDarkTheme] = useState(false)
   const [search, setSearch] = useState()
   const [user, setUser] = useState()
+  const [unknownUser, setUnknownUser] = useState(false)
 
   const onClickToggleTheme = () => setDarkTheme(!darkTheme)
 
   useEffect(() => {
     if(search){
       getGithubUser(search)
-      .then(data => setUser(JSON.stringify(data)))
+      .then(data => {
+        if(data.id)
+          setUser(JSON.stringify(data))
+        else
+          setUnknownUser(true)
+      })
       .catch(error => console.error(error))
     }
   }, [search])
@@ -55,7 +61,9 @@ function App() {
 
           <SearchBar
             darkTheme={darkTheme}
-            setSearch={setSearch} />
+            setSearch={setSearch}
+            unknownUser={unknownUser}
+            setUnknownUser={setUnknownUser}/>
 
           {user
             ? (

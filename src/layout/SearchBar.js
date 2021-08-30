@@ -25,6 +25,16 @@ const Wrapper = styled.form`
     }
 `
 
+const InputContainer = styled.fieldset`
+    border: none;
+    width: 100%;
+    outline: none;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
+
 const Input = styled.input`
     width: 100%;
     border: none;
@@ -34,27 +44,41 @@ const Input = styled.input`
     padding: 1rem 0.375rem;
     font-size: 1.125rem;
     line-height: 1.5rem;
+    margin-right: 1rem;
     
     &::placeholder{
         color: ${props => props.darkTheme? 'var(--color-dark-primary)' : 'var(--color-light-secondary)'};
     }
+
 
     @media screen and (min-width: 425px){
         padding: 1rem 1.5rem;
     }
 `
 
-export default function SearchBar({darkTheme, setSearch}) {
+const ErrorMsg = styled.p`
+    color: red;
+    width: 8.75rem;
+    display: ${props => props.unknownUser ? 'block' : 'none'};
+`
+
+export default function SearchBar({darkTheme, setSearch, unknownUser, setUnknownUser}) {
     var value = ''
 
     function onHandleChange(e){
         value = e.target.value
+        if(unknownUser)
+            setUnknownUser(false)
     }
 
     function onHandleSubmit(e){
         e.preventDefault()
         if(value !== '')
             setSearch(value)
+    }
+
+    function onHandleFocus(){
+        setUnknownUser(false)
     }
 
     return (
@@ -66,12 +90,18 @@ export default function SearchBar({darkTheme, setSearch}) {
                     width="24px"
                     height="24px"
                     alt=""/>
-                <Input
-                    darkTheme={darkTheme}
-                    type='text'
-                    placeholder='Search Github username...'
-                    onChange={(e) => onHandleChange(e)}
-                    required/>
+                <InputContainer>
+                    <Input
+                        darkTheme={darkTheme}
+                        type='text'
+                        placeholder='Search Github username...'
+                        onChange={(e) => onHandleChange(e)}
+                        onFocus={() => onHandleFocus()}
+                        required />
+                    <ErrorMsg unknownUser={unknownUser}>
+                        No results
+                    </ErrorMsg>
+                </InputContainer>
                 <SearchBtn>Search</SearchBtn>
         </Wrapper>
     )

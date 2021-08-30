@@ -30,7 +30,7 @@ export const ThemeToggleBtn = styled(Button)`
     align-items: center;
     padding: 0;
 
-    img{
-        margin-left: 1rem;
+    span{
+        margin-right: 1rem;
     }
 `

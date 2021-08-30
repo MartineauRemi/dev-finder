@@ -6,5 +6,8 @@ export function getGithubUser(username){
 
     return fetch(url)
             .then(data => data.json())
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error)
+                return null
+            })
 }

@@ -102,6 +102,11 @@ const InfosItem = styled.li`
     display: flex;
     flex-direction: row;
     align-items: center;
+    
+    span, a{
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     img{
         margin-right: 1.25rem;
@@ -116,7 +121,9 @@ const InfosItem = styled.li`
         &:nth-child(1), &:nth-child(2){
             margin-bottom: 1rem;
         }
+
         width: 50%;
+        padding-right: 1.5rem;
     }
 `
 
@@ -196,7 +203,7 @@ export default function Dashboard({darkTheme, data}) {
                         height="20px"
                         alt="" />
                     <a
-                        href="https://twitter.com"
+                        href={user.blog}
                         target="_blank"
                         rel="noreferrer">
                             {user.blog || 'Not available'}
@@ -210,7 +217,7 @@ export default function Dashboard({darkTheme, data}) {
                         height="20px"
                         alt="" />
                     <span>
-                        {user.company ? `@${user.company}` : 'Not available'}
+                        {user.company ? user.company : 'Not available'}
                     </span>
                 </InfosItem>
             </Infos>
