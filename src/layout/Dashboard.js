@@ -16,6 +16,16 @@ const Wrapper = styled.article`
     grid-template-areas: 'profilePic heading' 'bio bio' 'stats stats' 'links links';
     color: ${props => props.darkTheme? 'var(--color-dark-primary)' : 'var(--color-light-primary)'};
 
+    .unavailable{
+        span, a{
+            color: var(--gray);
+        }
+
+        path{
+            fill: var(--gray);
+        }
+    }
+
     @media screen and (min-width: 768px){
         padding: 2.5rem;
         grid-template-areas: 'heading' 'bio' 'stats' 'links';
@@ -82,7 +92,10 @@ const Stats = styled.ul`
 const StatItem = styled.li`
     list-style-type: none;
     color: ${props => props.darkTheme? 'var(--color-dark-primary)' : 'var(--color-light-secondary)'};
-    text-align: center;
+    
+    @media screen and (max-width: 767px){
+        text-align: center;
+    }
 `
 
 const Infos = styled.ul`
@@ -183,6 +196,7 @@ export default function Dashboard({darkTheme, data}) {
 
             <Infos>
                 <InfosItem
+                    className={!user.location && 'unavailable'}
                     darkTheme={darkTheme}>
                     <Icon darkTheme={darkTheme}>
                         <LocationIcon />
@@ -192,16 +206,18 @@ export default function Dashboard({darkTheme, data}) {
                     </span>
                 </InfosItem>
                 <InfosItem
-                    darkTheme={darkTheme}>
+                    darkTheme={darkTheme}
+                    className={!user.twitter_username && 'unavailable'}>
                     <Icon darkTheme={darkTheme}>
-                        <TwitterIcon />
+                            <TwitterIcon />
                     </Icon>
                     <span>
                         {user.twitter_username || 'Not available'}
                     </span>
                 </InfosItem>
                 <InfosItem
-                    darkTheme={darkTheme}>
+                    darkTheme={darkTheme}
+                    className={!user.blog && 'unavailable'}>
                     <Icon darkTheme={darkTheme}>
                         <WebsiteIcon />
                     </Icon>
@@ -213,12 +229,13 @@ export default function Dashboard({darkTheme, data}) {
                     </a>
                 </InfosItem>
                 <InfosItem
-                    darkTheme={darkTheme}>
+                    darkTheme={darkTheme}
+                    className={!user.company && 'unavailable'}>
                     <Icon darkTheme={darkTheme}>
                         <CompanyIcon />
                     </Icon>
                     <span>
-                        {user.company ? user.company : 'Not available'}
+                        {user.company || 'Not available'}
                     </span>
                 </InfosItem>
             </Infos>

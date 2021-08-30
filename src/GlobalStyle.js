@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
         --light-blue: #60ABFF;
         --blueish-gray: #4B6A9B;
         --white: #ffffff;
+        --gray: #909090;
         
         --bg-light-primary: #F6F8FF;
         --bg-light-secondary: #FEFEFE;
