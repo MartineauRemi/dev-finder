@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from "styled-components"
-import twitter from "../assets/icon-twitter.svg"
-import website from "../assets/icon-website.svg"
-import location from "../assets/icon-location.svg"
-import company from "../assets/icon-company.svg"
+import TwitterIcon from "../components/icons/TwitterIcon"
+import WebsiteIcon from "../components/icons/LinkIcon"
+import LocationIcon from "../components/icons/LocationIcon"
+import CompanyIcon from "../components/icons/CompanyIcon"
 import { formatedDate } from '../API/GithubUsersAPI'
 
 const Wrapper = styled.article`
@@ -97,9 +97,6 @@ const Infos = styled.ul`
 
 const InfosItem = styled.li`
     list-style-type: none;
-    color: ${props => props.darkTheme
-                        ? 'var(--color-dark-primary)'
-                        : 'var(--blueish-gray)'};
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -127,6 +124,15 @@ const InfosItem = styled.li`
         padding-right: 1.5rem;
     }
 `
+
+const Icon = styled.div`
+    margin-right: 1rem;
+
+    path{
+        fill: ${props => props.darkTheme ? 'var(--color-dark-primary)' : 'var(--blueish-gray)'}
+    }
+`
+
 export default function Dashboard({darkTheme, data}) {
     const user = JSON.parse(data)
     return (
@@ -138,7 +144,7 @@ export default function Dashboard({darkTheme, data}) {
                     alt={user.name + " profile picture"}/>
 
             <Heading>
-                <Username>{user.name}</Username>
+                <Username darkTheme={darkTheme}>{user.name}</Username>
                 <Usertag>@{user.login}</Usertag>
                 <Date>Joined <time>{formatedDate(user.created_at)}</time></Date>
             </Heading>
@@ -175,33 +181,27 @@ export default function Dashboard({darkTheme, data}) {
             <Infos>
                 <InfosItem
                     darkTheme={darkTheme}>
-                    <img
-                        src={location}
-                        width="20px"
-                        height="20px"
-                        alt="" />
+                    <Icon darkTheme={darkTheme}>
+                        <LocationIcon />
+                    </Icon>
                     <span>
                          {user.location || 'Not available'}
                     </span>
                 </InfosItem>
                 <InfosItem
                     darkTheme={darkTheme}>
-                    <img
-                        src={twitter}
-                        width="20px"
-                        height="20px"
-                        alt="" />
+                    <Icon darkTheme={darkTheme}>
+                        <TwitterIcon />
+                    </Icon>
                     <span>
                         {user.twitter_username || 'Not available'}
                     </span>
                 </InfosItem>
                 <InfosItem
                     darkTheme={darkTheme}>
-                    <img
-                        src={website}
-                        width="20px"
-                        height="20px"
-                        alt="" />
+                    <Icon darkTheme={darkTheme}>
+                        <WebsiteIcon />
+                    </Icon>
                     <a
                         href={user.blog}
                         target="_blank"
@@ -211,11 +211,9 @@ export default function Dashboard({darkTheme, data}) {
                 </InfosItem>
                 <InfosItem
                     darkTheme={darkTheme}>
-                    <img
-                        src={company}
-                        width="20px"
-                        height="20px"
-                        alt="" />
+                    <Icon darkTheme={darkTheme}>
+                        <CompanyIcon />
+                    </Icon>
                     <span>
                         {user.company ? user.company : 'Not available'}
                     </span>

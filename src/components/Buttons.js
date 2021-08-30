@@ -22,20 +22,20 @@ export const SearchBtn = styled(Button)`
 `
 
 export const ThemeToggleBtn = styled(Button)`
-    color: ${props => props.darkTheme? 'var(--color-dark-primary)' : 'var(--color-light-primary)'};
     text-transform: uppercase;
     letter-spacing: 2.5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0;
-    transition: all .2s ease-in-out;
 
     span{
+        color: ${props => props.darkTheme? 'var(--color-dark-primary)' : 'var(--color-light-primary)'};
         margin-right: 1rem;
+        transition: all .2s ease-in-out;
     }
 
-    &:hover{
+    &:hover span{
         color: ${props => props.darkTheme
                     ? 'var(--blueish-gray)'
                     : 'var(--color-light-secondary)'

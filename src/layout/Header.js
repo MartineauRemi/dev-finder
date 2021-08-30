@@ -36,6 +36,7 @@ const ThemeBtn = styled(ThemeToggleBtn)`
 
 const Logo = styled.h1`
     color: ${props => props.darkTheme? 'var(--color-dark-primary)' : 'var(--color-light-secondary)'};
+    transition: all .2s ease-in-out;
 `
 
 export default function Header({darkTheme, onClickToggleTheme}) {
