@@ -55,7 +55,6 @@ export default function SearchBar({darkTheme, setSearch}) {
         e.preventDefault()
         if(value !== '')
             setSearch(value)
-    
     }
 
     return (

@@ -39,6 +39,7 @@ const Heading = styled.section`
 const ProfilePic = styled.img`
     background: rebeccapurple;
     grid-area: profilePic;
+    border-radius: 50%;
 
     @media screen and (min-width: 768px) and (max-width: 1439px){
         grid-area: heading;
@@ -54,7 +55,7 @@ const Usertag = styled.h3`
     color: var(--blue);
 `
 
-const bio = styled.p`
+const Bio = styled.p`
     grid-area: bio;
 `
 
@@ -120,25 +121,25 @@ const InfosItem = styled.li`
 `
 
 export default function Dashboard({darkTheme, data}) {
-    const username = 'tartempion'
-
+    const user = JSON.parse(data)
     return (
         <Wrapper darkTheme={darkTheme}>
             <ProfilePic
                     width="70px"
                     height="70px"
-                    alt={username + " profile picture"}/>
+                    src={user.avatar_url}
+                    alt={user.name + " profile picture"}/>
+
             <Heading>
-                <Username>{username}</Username>
-                <Usertag>@tartenpion</Usertag>
-                <Date>Joined 25 Jan 2021</Date>
+                <Username>{user.name}</Username>
+                <Usertag>@{user.login}</Usertag>
+                <Date>Joined <time>{user.created_at}</time></Date>
             </Heading>
 
-            <bio>
-                Lorem ipsum dolor sit amet,
-                consectetuer adipiscing elit.
-                Donec odio. Quisque volutpat mattis eros.
-            </bio>
+            <Bio>
+                {user.bio}
+            </Bio>
+
             <Stats
                 darkTheme={darkTheme}>
                     <StatItem
@@ -146,23 +147,24 @@ export default function Dashboard({darkTheme, data}) {
                         <h4>
                             Repos
                         </h4>
-                        <strong>8</strong>
+                        <strong>{user.public_repos}</strong>
                     </StatItem>
                     <StatItem
                         darkTheme={darkTheme}>
                         <h4>
                             Followers
                         </h4>
-                        <strong>3938</strong>
+                        <strong>{user.followers}</strong>
                     </StatItem>
                     <StatItem
                         darkTheme={darkTheme}>
                        <h4>
                            Following
                        </h4>
-                       <strong>9</strong>
+                       <strong>{user.following}</strong>
                     </StatItem>
             </Stats>
+
             <Infos>
                 <InfosItem
                     darkTheme={darkTheme}>
@@ -171,7 +173,9 @@ export default function Dashboard({darkTheme, data}) {
                         width="20px"
                         height="20px"
                         alt="" />
-                    <span>San Francisco</span>
+                    <span>
+                         {user.location || 'Not available'}
+                    </span>
                 </InfosItem>
                 <InfosItem
                     darkTheme={darkTheme}>
@@ -180,7 +184,9 @@ export default function Dashboard({darkTheme, data}) {
                         width="20px"
                         height="20px"
                         alt="" />
-                    <span>unavailable</span>
+                    <span>
+                        {user.twitter_username || 'Not available'}
+                    </span>
                 </InfosItem>
                 <InfosItem
                     darkTheme={darkTheme}>
@@ -193,7 +199,7 @@ export default function Dashboard({darkTheme, data}) {
                         href="https://twitter.com"
                         target="_blank"
                         rel="noreferrer">
-                            https://github.blog
+                            {user.blog || 'Not available'}
                     </a>
                 </InfosItem>
                 <InfosItem
@@ -203,7 +209,9 @@ export default function Dashboard({darkTheme, data}) {
                         width="20px"
                         height="20px"
                         alt="" />
-                    <span>@github</span>
+                    <span>
+                        {user.company ? `@${user.company}` : 'Not available'}
+                    </span>
                 </InfosItem>
             </Infos>
         </Wrapper>

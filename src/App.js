@@ -1,14 +1,12 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Header from "./layout/Header"
 import SearchBar from "./layout/SearchBar"
 import Dashboard from "./layout/Dashboard"
 import GlobalStyle from "./GlobalStyle"
+import { getGithubUser } from "./API/GithubUsersAPI";
 
 const Wrapper = styled.div`
-    width: 100vw;
-    max-width: 100vw;
-    overflow-y: hidden;
     min-height: 100vh;
     background-color: ${props => props.darkTheme ? 'var(--bg-dark-primary)' : 'var(--bg-light-primary)'};
     color: ${props => props.darkTheme ? 'var(--color-dark)' : 'var(--color-light)'};
@@ -16,12 +14,12 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 2rem 1.5rem;
+    justify-content: center;
+    /* padding: 2rem 1.5rem; */
 
-    @media screen and (min-width: 768px){
+    /* @media screen and (min-width: 768px){
       padding: 8.75rem 6rem;
-    }
+    } */
   `
 
   const Main = styled.main`
@@ -32,8 +30,17 @@ const Wrapper = styled.div`
 function App() {
   const [darkTheme, setDarkTheme] = useState(false)
   const [search, setSearch] = useState()
+  const [user, setUser] = useState()
 
-const onClickToggleTheme = () => setDarkTheme(!darkTheme)
+  const onClickToggleTheme = () => setDarkTheme(!darkTheme)
+
+  useEffect(() => {
+    if(search){
+      getGithubUser(search)
+      .then(data => setUser(JSON.stringify(data)))
+      .catch(error => console.error(error))
+    }
+  }, [search])
 
   return (
     <React.Fragment>
@@ -48,10 +55,14 @@ const onClickToggleTheme = () => setDarkTheme(!darkTheme)
 
           <SearchBar
             darkTheme={darkTheme}
-            setSearch={setSearch}/>
+            setSearch={setSearch} />
 
-          <Dashboard
-            darkTheme={darkTheme} />
+          {user
+            ? (
+              <Dashboard
+                darkTheme={darkTheme}
+                data={user} />)
+            : null}
         </Main>
       </Wrapper>
     </React.Fragment>

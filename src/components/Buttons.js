@@ -9,6 +9,7 @@ const Button = styled.button`
     font-weight: var(--fw-bold);
     transition: all .2s linear;
     background-color: transparent;
+    outline: none;
 `
 
 export const SearchBtn = styled(Button)`
