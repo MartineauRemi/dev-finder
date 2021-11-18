@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/dev-finder/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/dev-finder/static/js/main.5e55f1a7.chunk.js",
+    "main.js.map": "/dev-finder/static/js/main.5e55f1a7.chunk.js.map",
+    "runtime-main.js": "/dev-finder/static/js/runtime-main.797d7a45.js",
+    "runtime-main.js.map": "/dev-finder/static/js/runtime-main.797d7a45.js.map",
+    "static/js/2.af527a9b.chunk.js": "/dev-finder/static/js/2.af527a9b.chunk.js",
+    "static/js/2.af527a9b.chunk.js.map": "/dev-finder/static/js/2.af527a9b.chunk.js.map",
+    "static/js/3.8fabb673.chunk.js": "/dev-finder/static/js/3.8fabb673.chunk.js",
+    "static/js/3.8fabb673.chunk.js.map": "/dev-finder/static/js/3.8fabb673.chunk.js.map",
+    "index.html": "/dev-finder/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/dev-finder/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.af527a9b.chunk.js.LICENSE.txt": "/dev-finder/static/js/2.af527a9b.chunk.js.LICENSE.txt",
+    "static/media/icon-search.0cc0c984.svg": "/dev-finder/static/media/icon-search.0cc0c984.svg",
+    "static/media/search-illustration.79b4423f.svg": "/dev-finder/static/media/search-illustration.79b4423f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.797d7a45.js",
+    "static/js/2.af527a9b.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.5e55f1a7.chunk.js"
+  ]
+}
